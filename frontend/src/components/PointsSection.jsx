@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './PointsSection.css';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+
 const PointsSection = () => {
   const [users, setUsers] = useState([]);
   const [highlightedUser, setHighlightedUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [claimingUserId, setClaimingUserId] = useState(null);
+
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -37,15 +39,17 @@ const PointsSection = () => {
     setHighlightedUser(null);
   };
 
-    const handleUserClick = async (userId) => {
+  const handleClaimPoints = async (userId) => {
+    setClaimingUserId(userId);
     try {
       await axios.post(`https://clickandwin.onrender.com/api/users/${userId}/claim`);
-      window.location.reload(); 
+      await fetchUsers(); // Refresh the list after claiming
     } catch (error) {
       console.error('Error claiming points:', error);
+    } finally {
+      setClaimingUserId(null);
     }
   };
-
 
   const handleRefresh = () => {
     fetchUsers();
@@ -62,6 +66,7 @@ const PointsSection = () => {
         <span>RANK</span>
         <span>PLAYER</span>
         <span>POINTS</span>
+        <span>ACTION</span>
       </div>
 
       {isLoading ? (
@@ -75,7 +80,6 @@ const PointsSection = () => {
               style={{ animationDelay: `${user.delay}s` }}
               onMouseEnter={() => handleHover(user._id)}
               onMouseLeave={handleLeave}
-              onClick={() => handleUserClick(user._id)}
             >
               <div className="user-rank">
                 <span className="rank-number">{user.rank}</span>
@@ -95,6 +99,15 @@ const PointsSection = () => {
                   minimumFractionDigits: 3,
                   maximumFractionDigits: 3
                 })}
+              </div>
+              <div className="claim-button-container">
+                <button
+                  className="claim-btn"
+                  onClick={() => handleClaimPoints(user._id)}
+                  disabled={claimingUserId === user._id}
+                >
+                  {claimingUserId === user._id ? 'Claiming...' : 'Claim'}
+                </button>
               </div>
             </div>
           ))}
