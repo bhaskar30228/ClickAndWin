@@ -10,10 +10,11 @@ import { dbConnection } from './config/Db.js';
 const app = express();
 
 // Middleware
-app.use(cors({
-  origin: ["https://click-and-win.vercel.app","http://localhost:5173"], // or "*" for all origins (not recommended for production)
-  credentials: true
-}));
+const corsOptions = {
+  origin: ['http://localhost:5173', 'https://your-frontend-domain.com'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
 app.use(express.json());
 
 dbConnection();
