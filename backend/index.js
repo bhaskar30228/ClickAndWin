@@ -10,7 +10,10 @@ import { dbConnection } from './config/Db.js';
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: ["https://click-and-win.vercel.app","http://localhost:5173"], // or "*" for all origins (not recommended for production)
+  credentials: true
+}));
 app.use(express.json());
 
 dbConnection();
