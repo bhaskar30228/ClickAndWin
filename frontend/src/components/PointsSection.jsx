@@ -13,7 +13,7 @@ const PointsSection = () => {
   const fetchUsers = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get('https://clickandwin.onrender.com/api/users');
+      const response = await axios.get('https://clickandwin-1.onrender.com/api/users');
       const sortedUsers = response.data
         .sort((a, b) => b.points - a.points)
         .map((user, index) => ({
@@ -39,7 +39,7 @@ const PointsSection = () => {
 
     const handleUserClick = async (userId) => {
     try {
-      await axios.post(`https://clickandwin.onrender.com/api/users/${userId}/claim`);
+      await axios.post(`https://clickandwin-1.onrender.com/api/users/${userId}/claim`);
       window.location.reload(); 
     } catch (error) {
       console.error('Error claiming points:', error);
