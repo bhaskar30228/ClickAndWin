@@ -1,0 +1,239 @@
+/* PointsSection.css */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+  --gold: linear-gradient(135deg, #FFD700 0%, #D4AF37 100%);
+  --fire: linear-gradient(135deg, #FF416C 0%, #FF4B2B 100%);
+  --electric: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+  --purple: linear-gradient(135deg, #9D50BB 0%, #6E48AA 100%);
+  --cool: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+  --tech: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
+  --light: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  --mystery: linear-gradient(135deg, #4776E6 0%, #8E54E9 100%);
+  --fun: linear-gradient(135deg, #FF61D2 0%, #FE9090 100%);
+  --ghost: linear-gradient(135deg, #BDBBBE 0%, #9D9EA3 100%);
+}
+
+.points-container {
+  font-family: 'Roboto', sans-serif;
+  max-width: 600px;
+  margin: 2rem auto;
+  background: #1a1a2e;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.title-main {
+  display: block;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(to right, #fbc531, #e84118, #00a8ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.title-sub {
+  display: block;
+  font-size: 1rem;
+  color: #a4b0be;
+  letter-spacing: 5px;
+  margin-top: 0.5rem;
+}
+
+.leaderboard-header {
+  display: grid;
+  grid-template-columns: 80px 1fr 120px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  color: #f1f2f6;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.users-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.user-card {
+  display: grid;
+  grid-template-columns: 80px 1fr 120px;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.5s forwards;
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.user-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+}
+
+.user-card.gold::before { background: var(--gold); }
+.user-card.fire::before { background: var(--fire); }
+.user-card.electric::before { background: var(--electric); }
+.user-card.purple::before { background: var(--purple); }
+.user-card.cool::before { background: var(--cool); }
+.user-card.tech::before { background: var(--tech); }
+.user-card.light::before { background: var(--light); }
+.user-card.mystery::before { background: var(--mystery); }
+.user-card.fun::before { background: var(--fun); }
+.user-card.ghost::before { background: var(--ghost); }
+
+.user-card.highlighted {
+  transform: scale(1.02);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.user-rank {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rank-number {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #f1f2f6;
+  min-width: 30px;
+}
+
+.rank-avatar {
+  font-size: 1.8rem;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.user-name {
+  font-weight: bold;
+  color: #f1f2f6;
+  font-size: 1.1rem;
+}
+
+.user-progress {
+  height: 6px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.user-card.gold .progress-bar { background: var(--gold); }
+.user-card.fire .progress-bar { background: var(--fire); }
+.user-card.electric .progress-bar { background: var(--electric); }
+.user-card.purple .progress-bar { background: var(--purple); }
+.user-card.cool .progress-bar { background: var(--cool); }
+.user-card.tech .progress-bar { background: var(--tech); }
+.user-card.light .progress-bar { background: var(--light); }
+.user-card.mystery .progress-bar { background: var(--mystery); }
+.user-card.fun .progress-bar { background: var(--fun); }
+.user-card.ghost .progress-bar { background: var(--ghost); }
+
+.user-points {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  text-align: right;
+  color: #f1f2f6;
+  font-size: 1.1rem;
+}
+
+.leaderboard-footer {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.refresh-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #f1f2f6;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.refresh-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .points-container {
+    padding: 1rem;
+    border-radius: 0;
+  }
+  
+  .leaderboard-header {
+    grid-template-columns: 60px 1fr 90px;
+    font-size: 0.7rem;
+  }
+  
+  .user-card {
+    grid-template-columns: 60px 1fr 90px;
+    padding: 0.8rem;
+  }
+  
+  .rank-number {
+    font-size: 1.2rem;
+  }
+  
+  .user-name {
+    font-size: 1rem;
+  }
+  
+  .user-points {
+    font-size: 0.9rem;
+  }
+}
