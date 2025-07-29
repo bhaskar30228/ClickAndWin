@@ -34,7 +34,7 @@ const UserForm = ({ onUserAdded }) => {
 
     try {
       setIsSubmitting(true);
-      const response = await axios.post('https://clickandwin-1.onrender.com/api/users', {
+      const response = await axios.post('https://clickandwin.onrender.com/api/users', {
         name: formData.name,
         points: pointsValue
       });
