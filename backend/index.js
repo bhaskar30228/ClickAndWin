@@ -9,7 +9,7 @@ import userRoutes from './routes/userRoutes.js'; // Assuming you have a userRout
 import { dbConnection } from './config/Db.js';
 const app = express();
 
-const allowedOrigins = ['https://click-and-win.vercel.app/', 'http://localhost:5173'];
+const allowedOrigins = ['https://click-and-win.vercel.app', 'http://localhost:5173'];
 
 app.use(cors({
   origin: function (origin, callback) {
