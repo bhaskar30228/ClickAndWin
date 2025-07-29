@@ -1,6 +1,3 @@
-import React from 'react'
-import Navbar from './components/Navbar'
-import PointsSection from './components/PointsSection'
 import './App.css'
 import { createBrowserRouter,RouterProvider } from 'react-router-dom'
 import Ranking from './pages/Ranking'
